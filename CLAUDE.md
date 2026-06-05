@@ -146,10 +146,27 @@ Keine bekannten offenen Bugs.
 
 **Wichtige Dateien (Einstieg Phase 8)**
 
-- Einstellungen-Stub: `src/renderer/pages/Einstellungen.tsx` (noch Platzhalter)
-- Einstellungen-IPC: `electron/ipc/einstellungen.ipc.ts` (bereits vollständig)
-- App-Icons: `assets/icons/` (noch leer, Icons einzufügen)
-- Build-Konfiguration: `electron-builder.config.js` (bereits vorhanden)
+- Einstellungen-Stub: `src/renderer/pages/Einstellungen.tsx` (noch Platzhalter → vollständig implementieren)
+- Einstellungen-IPC: `electron/ipc/einstellungen.ipc.ts` ✅ fertig (`einstellungen:laden` / `einstellungen:speichern`)
+- Einstellungen-Repository: `src/server/db/repositories/einstellungen.repository.ts` ✅ fertig (Key-Value in `lpm_einstellungen`)
+- KI-Router: `src/server/ki/router.ts` – liest Einstellungen mit folgenden DB-Schlüsseln:
+  - `ki.adapter.erklaerung` / `ki.adapter.zusammenfassung` / `ki.adapter.empfehlung` / `ki.adapter.risiko`
+  - `ki.apikey.anthropic` / `ki.apikey.openai` / `ki.apikey.gemini` / `ki.apikey.openrouter`
+  - `ki.baseurl.ollama` (Standard: `http://localhost:11434`)
+  - `ki.modell.anthropic` / `ki.modell.openai` / `ki.modell.gemini` / `ki.modell.openrouter`
+- App-Icons: `assets/icons/` (noch leer)
+  - `icon.icns` → macOS (.dmg)
+  - `icon.ico` → Windows (.exe)
+  - `icon.png` 1024×1024 (Basis für beide)
+- Build-Konfiguration: `electron-builder.config.js` ✅ vorhanden (appId: `de.jwsafety.lpm-manager`, NSIS + DMG)
+
+**Phase-8-Umfang (Checkliste)**
+
+1. `Einstellungen.tsx` vollständig: KI-Adapter-Auswahl je Use-Case, API-Keys, Ollama-URL, Modellauswahl
+2. Verbindungstest-Button je Adapter (`ki:adapter-testen` IPC ist bereits implementiert)
+3. App-Icons erstellen/einfügen (`icon.icns`, `icon.ico`, `icon.png`)
+4. `npm run build` / `npm run make` – finaler Build-Test (Windows .exe)
+5. Edge Cases und Loading States überprüfen
 
 **Phase 6 – ABGESCHLOSSEN ✅**
 
