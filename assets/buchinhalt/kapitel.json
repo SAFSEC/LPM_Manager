@@ -1,3 +1,363 @@
 {
-  "teile": []
+  "buch": {
+    "titel": "Loss Prevention Management und das Insider-Risiko",
+    "autor": "Jörg Weidemann",
+    "verlag": "JW Safety & Security",
+    "seiten": 692
+  },
+  "teile": [
+    {
+      "id": "teil-1",
+      "titel": "Teil I – Fachtheorie",
+      "beschreibung": "Wissenschaftliche und praktische Grundlagen des Loss Prevention Managements in 9 Kapiteln.",
+      "kapitel": [
+        {
+          "id": "K-01",
+          "titel": "Kapitel 1 – Grundlagen des Loss Prevention Management",
+          "kurzinhalt": "Einführung in das Konzept des Loss Prevention Management (LPM): Definition, Abgrenzung zu klassischem Sicherheitsmanagement, historische Entwicklung und heutige Bedeutung in Industrie und Handel. LPM versteht Verluste nicht nur als Diebstahl, sondern als systemisches Phänomen – von operativen Fehler über Compliance-Verstöße bis zur bewussten Schädigung.",
+          "schluesselkonzepte": [
+            "Loss Prevention vs. Security Management",
+            "Verlustquellen (Shrinkage, Waste, Fraud)",
+            "Proaktiver vs. reaktiver Ansatz",
+            "Return on Security Investment (ROSI)",
+            "Stakeholder-Analyse im LPM"
+          ],
+          "module": [],
+          "anlagen": []
+        },
+        {
+          "id": "K-02",
+          "titel": "Kapitel 2 – Das Insider-Risiko",
+          "kurzinhalt": "Das Insider-Risiko beschreibt die Gefährdung durch Personen innerhalb der eigenen Organisation – Mitarbeiter, Führungskräfte, Dienstleister. Insidertäter agieren aus unterschiedlichen Motiven (finanzieller Druck, Unzufriedenheit, Ideologie, externe Einflussnahme) und haben privilegierten Zugang zu Assets, Daten und Prozessen. Das Kapitel analysiert Täterprofile, typische Verhaltensanzeichen und die Schwierigkeit der Früherkennung.",
+          "schluesselkonzepte": [
+            "Insider Threat – Definition und Kategorien",
+            "Unbeabsichtigter vs. vorsätzlicher Insider",
+            "Privilege Creep und Zugriffsrechte",
+            "Behavioral Indicators (Verhaltensauffälligkeiten)",
+            "MICE-Modell (Money, Ideology, Coercion, Ego)"
+          ],
+          "module": [],
+          "anlagen": []
+        },
+        {
+          "id": "K-03",
+          "titel": "Kapitel 3 – Tätertypologie und Motivationslagen",
+          "kurzinhalt": "Systematische Klassifizierung von Tätertypen im unternehmerischen Umfeld: vom opportunistischen Gelegenheitstäter über den frustrierten Langzeitangestellten bis zum gezielt platzierten Spion. Das Kapitel behandelt psychologische Grundlagen der Delinquenz, die Entwicklung von Tatentschlüssen und Eskalationspfade. Besondere Aufmerksamkeit gilt der Kombination aus persönlicher Lebenslage und betrieblichen Drucksituationen.",
+          "schluesselkonzepte": [
+            "Täterklassifikation (Opportunist, Planer, Rezidivist)",
+            "Fraud Triangle (Druck, Gelegenheit, Rationalisierung)",
+            "Radicalization Pathway",
+            "Soziale Netzwerke und Mittäterschaft",
+            "Prädiktive Indikatoren"
+          ],
+          "module": [],
+          "anlagen": []
+        },
+        {
+          "id": "K-04",
+          "titel": "Kapitel 4 – Präventive Sicherheitsstrategien",
+          "kurzinhalt": "Aufbau einer wirksamen Präventionsstrategie: Von der Risikoanalyse über die Schutzbedarfsfeststellung bis zur Maßnahmenplanung. Das Kapitel stellt das Defense-in-Depth-Modell (mehrschichtige Sicherheit) vor und zeigt, wie technische, organisatorische und personelle Maßnahmen systematisch kombiniert werden. Besonderer Fokus liegt auf der Balance zwischen Kontrolle und Vertrauen.",
+          "schluesselkonzepte": [
+            "Defense in Depth",
+            "Schutzbedarfsanalyse",
+            "Präventions-Detektions-Reaktions-Zyklus",
+            "Prinzip der minimalen Rechtevergabe (Least Privilege)",
+            "Zero-Trust-Ansatz in der Praxis"
+          ],
+          "module": ["M-01", "M-02"],
+          "anlagen": ["A-01", "A-02"]
+        },
+        {
+          "id": "K-05",
+          "titel": "Kapitel 5 – Organisatorische Sicherheit",
+          "kurzinhalt": "Sicherheit als organisatorisches Prinzip: Aufbauorganisation der Sicherheitsabteilung, Rollenverteilung, Verantwortlichkeiten und Berichtslinien. Das Kapitel behandelt Sicherheitsrichtlinien, SOPs (Standard Operating Procedures), Schulungskonzepte und die Integration von Sicherheitsdenken in alle Unternehmensebenen. Sicherheitskultur als zentraler Erfolgsfaktor.",
+          "schluesselkonzepte": [
+            "Sicherheitsorganisation und RACI-Matrix",
+            "Security Policy und Richtlinienhierarchie",
+            "Awareness-Programme",
+            "Security Champion Konzept",
+            "Führungsverantwortung für Sicherheit"
+          ],
+          "module": ["M-03", "M-04"],
+          "anlagen": ["A-03", "A-04"]
+        },
+        {
+          "id": "K-06",
+          "titel": "Kapitel 6 – Technische Sicherheit und physischer Schutz",
+          "kurzinhalt": "Technische Schutzmaßnahmen: Zutrittskontrollsysteme, Videoüberwachung, Alarmanlagen, Perimeterschutz und elektronische Artikelsicherung. Das Kapitel bewertet Wirksamkeit und Grenzen technischer Systeme und zeigt, wie sie mit organisatorischen Maßnahmen zu einem kohärenten Schutzkonzept verknüpft werden. Wirtschaftlichkeitsbetrachtung und Systemauswahl.",
+          "schluesselkonzepte": [
+            "Zonenmodell (öffentlich / eingeschränkt / gesichert / hochsicher)",
+            "Zutrittskontrolle (ZKS) und Schlüsselmanagement",
+            "CCTV-Konzepte und KI-gestützte Videoanalyse",
+            "EAS (Electronic Article Surveillance)",
+            "Alarmanlagen DIN VDE 0833"
+          ],
+          "module": ["M-05", "M-06"],
+          "anlagen": ["A-05", "A-06", "A-07"]
+        },
+        {
+          "id": "K-07",
+          "titel": "Kapitel 7 – Personalmanagement und innere Sicherheit",
+          "kurzinhalt": "Sicherheitsrelevante Aspekte des Personalmanagements: Pre-Employment-Screening, Zuverlässigkeitsüberprüfungen, sichere Einarbeitung und Offboarding-Prozesse. Das Kapitel behandelt den Umgang mit Verdachtsfällen, interne Ermittlungen unter Beachtung des Arbeitsrechts sowie Whistleblowing-Strukturen. Balance zwischen Fürsorge- und Kontrollpflicht des Arbeitgebers.",
+          "schluesselkonzepte": [
+            "Pre-Employment Screening",
+            "Zuverlässigkeitsüberprüfung (ZÜP)",
+            "Sicheres Onboarding und Offboarding",
+            "Interne Ermittlungen und arbeitsrechtliche Grenzen",
+            "Whistleblowing-Richtlinie (HinSchG)"
+          ],
+          "module": ["M-07", "M-08"],
+          "anlagen": ["A-08", "A-09"]
+        },
+        {
+          "id": "K-08",
+          "titel": "Kapitel 8 – Compliance, Recht und Datenschutz",
+          "kurzinhalt": "Rechtliche Rahmenbedingungen des LPM in Deutschland: Strafrecht, Arbeitsrecht, Datenschutz (DSGVO), Betriebsverfassungsgesetz und branchenspezifische Regulierung. Das Kapitel zeigt, wie Überwachungsmaßnahmen rechtskonform gestaltet werden und welche Konsequenzen rechtwidrige Maßnahmen haben. Compliance-Management als integraler Bestandteil des LPM.",
+          "schluesselkonzepte": [
+            "DSGVO und Überwachungsmaßnahmen",
+            "Mitbestimmungsrechte des Betriebsrats (§87 BetrVG)",
+            "Verwertungsverbot bei rechtswidrig erlangten Beweisen",
+            "Corporate Compliance und Haftungsrisiken",
+            "Datensparsamkeit und Zweckbindung"
+          ],
+          "module": ["M-09"],
+          "anlagen": ["A-10", "A-11"]
+        },
+        {
+          "id": "K-09",
+          "titel": "Kapitel 9 – Krisen- und Notfallmanagement",
+          "kurzinhalt": "Systematisches Krisen- und Notfallmanagement als Bestandteil des LPM: BCM (Business Continuity Management), Notfallpläne, Krisenorganisation und Übungen. Das Kapitel behandelt die Phasen eines Sicherheitsvorfalls (Prävention, Detektion, Reaktion, Recovery) und zeigt, wie Organisationen widerstandsfähig (resilient) gemacht werden. Kommunikation in der Krise.",
+          "schluesselkonzepte": [
+            "Business Continuity Management (BCM) nach ISO 22301",
+            "Notfallhandbuch und Krisenplan",
+            "Krisenkommando und Eskalationsstufen",
+            "Tabletop-Übungen und Simulationen",
+            "Post-Incident-Review und Lessons Learned"
+          ],
+          "module": ["M-10", "M-11", "M-12"],
+          "anlagen": ["A-12", "A-13"]
+        }
+      ]
+    },
+    {
+      "id": "teil-2",
+      "titel": "Teil II – Praxis-Stories",
+      "beschreibung": "10 authentische Fallstudien aus dem Industriealltag – anonymisiert und systematisch aufbereitet.",
+      "stories": [
+        {
+          "id": "PS-01",
+          "titel": "Story 1 – Der vertrauenswürdige Buchhalter",
+          "branche": "Produktion / Mittelstand",
+          "kurzinhalt": "Ein langjähriger Buchhalter nutzt über mehrere Jahre hinweg mangelnde Kontrollen im Finanzbereich, um systematisch kleinere Beträge umzuleiten. Der Fall illustriert das Fraud-Triangle in der Praxis: wirtschaftlicher Druck (Privatschulden), fehlende Gegenprüfungen (Gelegenheit) und die Überzeugung, es later wieder auszugleichen (Rationalisierung). Entdeckung durch einen Zufallsbefund im Jahresabschluss.",
+          "lernpunkte": ["Vier-Augen-Prinzip im Finanzwesen", "Rotation von Vertrauenspositionen", "Regelmäßige Abweichungsanalysen"]
+        },
+        {
+          "id": "PS-02",
+          "titel": "Story 2 – Organisierter Schwund im Lager",
+          "branche": "Logistik / E-Commerce",
+          "kurzinhalt": "Eine koordinierte Gruppe von Lagermitarbeitern schleust über Monate hochwertige Elektronik aus einem Fulfillment-Center. Ermöglicht durch Schwachstellen in der Warenausgangskontrolle und Komplizenschaft mit externen Fahrern. Entdeckung durch Inventuranalyse, Aufdeckung durch verdeckte CCTV-Auswertung.",
+          "lernpunkte": ["Warenausgangskontrolle und Siegelung", "CCTV-Auswertungsroutinen", "Verhaltensindikatoren bei koordinierten Taten"]
+        },
+        {
+          "id": "PS-03",
+          "titel": "Story 3 – Datenmissbrauch durch ausscheidenden Mitarbeiter",
+          "branche": "IT / Beratung",
+          "kurzinhalt": "Ein Vertriebsmitarbeiter kopiert kurz vor seiner Kündigung vollständige Kundenlisten und Projektdaten auf einen privaten USB-Stick. Die Daten tauchen beim neuen Arbeitgeber (Wettbewerber) auf. Der Fall beleuchtet Offboarding-Risiken, technische Präventionsmöglichkeiten (DLP) und zivilrechtliche Durchsetzungsmöglichkeiten.",
+          "lernpunkte": ["Data Loss Prevention (DLP)", "Sicheres Offboarding-Protokoll", "Forensische Beweissicherung", "UWG und Geheimnisschutzgesetz"]
+        },
+        {
+          "id": "PS-04",
+          "titel": "Story 4 – Bestechung im Einkauf",
+          "branche": "Automobil-Zulieferer",
+          "kurzinhalt": "Ein Einkaufsleiter bevorzugt über Jahre einen bestimmten Lieferanten gegen verdeckte Zahlungen auf ein Schwarzkonto. Entdeckt durch einen anonymen Hinweis über die Whistleblowing-Hotline. Der Fall zeigt die typischen Anzeichen von Korruption im Einkauf und die Bedeutung von Compliance-Strukturen.",
+          "lernpunkte": ["Korruptionsindikatoren im Einkauf", "Lieferantenaudits", "Whistleblowing-Systeme", "Anti-Korruptions-Compliance"]
+        },
+        {
+          "id": "PS-05",
+          "titel": "Story 5 – Sabotage durch frustrierten Mitarbeiter",
+          "branche": "Chemie / Produktion",
+          "kurzinhalt": "Ein langjähriger Produktionsmitarbeiter, dem eine Beförderung verwehrt wurde, manipuliert gezielt Produktionsparameter, was zu erheblichen Qualitätsmängeln und Rückrufaktionen führt. Der Fall zeigt die Eskalationsdynamik von Frustration zu aktivem Schaden und die Bedeutung von Frühwarnsystemen.",
+          "lernpunkte": ["Änderungsmanagement in kritischen Systemen", "Mitarbeiterzufriedenheit als Sicherheitsfaktor", "Anomalieerkennung in Produktionsdaten"]
+        },
+        {
+          "id": "PS-06",
+          "titel": "Story 6 – Fremdfirmenrisiko auf der Baustelle",
+          "branche": "Bau / Facility Management",
+          "kurzinhalt": "Mitarbeiter eines Reinigungsdienstleisters verschaffen sich nach Arbeitsende Zutritt zu nicht freigegebenen Bereichen und entwenden Werkzeug sowie kleinere Wertgegenstände. Der Fall illustriert das oft unterschätzte Risiko durch Fremdfirmen und die Notwendigkeit systematischer Fremdfirmenmanagementsysteme.",
+          "lernpunkte": ["Fremdfirmenmanagement und Briefing", "Zonenkonzept und Bereichsfreigaben", "Dokumentation von Fremdfirmen-Zutritten"]
+        },
+        {
+          "id": "PS-07",
+          "titel": "Story 7 – Identitätsdiebstahl im Unternehmen",
+          "branche": "Finanzdienstleistung",
+          "kurzinhalt": "Ein Mitarbeiter nutzt die Zugangsdaten eines Kollegen, der im Urlaub ist, um auf vertrauliche Kundendaten zuzugreifen und diese weiterzuverkaufen. Der Fall beleuchtet Schwächen im Identity & Access Management und die Bedeutung von Zugriffsprotokollen.",
+          "lernpunkte": ["Identity & Access Management (IAM)", "Zugriffsprotokollierung und Anomalieerkennung", "Passwort-Policy und MFA"]
+        },
+        {
+          "id": "PS-08",
+          "titel": "Story 8 – Social Engineering gegen die Rezeption",
+          "branche": "Pharmaindustrie",
+          "kurzinhalt": "Ein externer Täter gibt sich als IT-Techniker aus und überredet die Rezeption, ihm unbeaufsichtigten Zutritt zu einem Serverraum zu gewähren. Dabei installiert er ein Hardware-Keylogger. Der Fall zeigt die menschliche Schwachstelle in technisch abgesicherten Systemen.",
+          "lernpunkte": ["Social Engineering Awareness Training", "Besuchermanagement und Begleitung", "Physische IT-Sicherheit"]
+        },
+        {
+          "id": "PS-09",
+          "titel": "Story 9 – Inventurmanipulation im Handel",
+          "branche": "Einzelhandel / DIY",
+          "kurzinhalt": "Filialmitarbeiter manipulieren systematisch Inventurzählungen, um Schwund zu verschleiern und eigene Entnahmen zu verbergen. Entdeckt durch eine unangekündigte Stichprobeninventur. Der Fall zeigt die Bedeutung unabhängiger Kontrollinstanzen bei Inventurprozessen.",
+          "lernpunkte": ["Inventurgestaltung und Unabhängigkeit", "Stichprobeninventuren", "Vier-Augen-Prinzip bei Zählungen"]
+        },
+        {
+          "id": "PS-10",
+          "titel": "Story 10 – Cybercrime mit Insider-Unterstützung",
+          "branche": "Versicherung",
+          "kurzinhalt": "Eine externe Hackergruppe gewinnt über Social-Media-Kontakt einen unzufriedenen IT-Mitarbeiter als Innentäter. Dieser installiert Schadsoftware und gibt VPN-Zugangsdaten weiter. Der hybride Angriff (cyber + insider) führt zu erheblichem Datenverlust. Warnsignal war ein deutlicher Verhaltensabfall des Mitarbeiters.",
+          "lernpunkte": ["Hybride Angriffe (Cyber + Insider)", "Verhaltensmonitoring im IT-Bereich", "Netzwerksegmentierung und Least Privilege"]
+        }
+      ]
+    },
+    {
+      "id": "teil-3",
+      "titel": "Teil III – Operative Arbeitsmodule",
+      "beschreibung": "12 direkt anwendbare Arbeitsmodule für die tägliche Sicherheitspraxis – von der Standortbewertung bis zum Krisenmanagement.",
+      "module": [
+        {
+          "id": "M-01",
+          "titel": "M1 – Sicherheitspolitik und Richtlinien",
+          "kurzinhalt": "Entwicklung und Implementierung einer unternehmensweiten Sicherheitspolitik. Enthält Vorlagen für Sicherheitsrichtlinien, Verfahrensanweisungen und Kommunikationspläne. Leitfaden für die Erstellung einer dreistufigen Richtlinienhierarchie (Policy – Standard – Prozedur).",
+          "schluesselkonzepte": ["Sicherheitspolitik-Template", "Richtlinienhierarchie", "Freigabe- und Reviewprozesse"]
+        },
+        {
+          "id": "M-02",
+          "titel": "M2 – Risikoanalyse und Schutzbedarfsfeststellung",
+          "kurzinhalt": "Systematische Methode zur Identifikation, Bewertung und Priorisierung von Sicherheitsrisiken. Enthält Worksheetvorlagen für die Risikoanalyse, Bewertungsmatrizen (Eintrittswahrscheinlichkeit × Schadenshöhe) und Maßnahmenkataloge.",
+          "schluesselkonzepte": ["Risikoanalyse-Methodik", "Risikomatrix", "Maßnahmenpriorisierung nach Kosten-Nutzen"]
+        },
+        {
+          "id": "M-03",
+          "titel": "M3 – Schulungskonzept und Awareness",
+          "kurzinhalt": "Aufbau eines nachhaltigen Sicherheits-Awareness-Programms für alle Mitarbeiterebenen. Enthält Lehrplanentwürfe, Quizvorlagen, Phishing-Simulations-Konzepte und Kennzahlen zur Erfolgsmessung.",
+          "schluesselkonzepte": ["Awareness-Zielgruppenanalyse", "Lernzielkontrolle", "Security Culture Metrics"]
+        },
+        {
+          "id": "M-04",
+          "titel": "M4 – Fremdfirmenmanagement",
+          "kurzinhalt": "Vollständiger Prozess für das Management externer Dienstleister auf dem Unternehmensgelände: Vorab-Screening, Sicherheitsunterweisung, Zutrittsmanagement und Abschlusskontrolle. Formulare und Checklisten inklusive.",
+          "schluesselkonzepte": ["Dienstleister-Screening", "Sicherheitsunterweisung Fremdfirmen", "Zutrittsprotokoll"]
+        },
+        {
+          "id": "M-05",
+          "titel": "M5 – Notfallorganisation und Erstmaßnahmen",
+          "kurzinhalt": "Aufbau einer funktionsfähigen Notfallorganisation: Alarmierungsketten, Notfallkarten, Evakuierungsplanung und Erstmaßnahmen bei verschiedenen Schadensereignissen. Die Notfallkarte M5 ist ein direktes Praxiswerkzeug aus diesem Modul.",
+          "schluesselkonzepte": ["Alarmierungskette", "Evakuierungsplanung", "Erstmaßnahmen je Schadensereignis", "Notfallkarte"]
+        },
+        {
+          "id": "M-06",
+          "titel": "M6 – Schlüssel- und Zutrittsmittelverwaltung",
+          "kurzinhalt": "Systematische Verwaltung aller Zutrittsmittel (Schlüssel, Chips, Codes, Fernbedienungen): Ausgabeverfahren, Dokumentation, Kontrolle und Rückgabe. Direkt verknüpft mit dem Formular F-06.",
+          "schluesselkonzepte": ["Schlüsselverzeichnis", "Ausgabe- und Rücknahmeprotokoll", "Regelmäßige Bestandsprüfung"]
+        },
+        {
+          "id": "M-07",
+          "titel": "M7 – Sicherheitsdienste und -personal",
+          "kurzinhalt": "Anforderungen an Sicherheitspersonal: Qualifikationsprofile, Dienstanweisungen, Dienstplangestaltung, Kontrollen und Leistungsbewertung. Enthält Mustervorlagen für Dienstanweisungen und Leistungskriterien.",
+          "schluesselkonzepte": ["Sicherheitsdienstleister-Auswahl", "Dienstanweisung und SLA", "Qualitätskontrolle Sicherheitsdienst"]
+        },
+        {
+          "id": "M-08",
+          "titel": "M8 – Wareneingang und Warensicherung",
+          "kurzinhalt": "Sicherheitsprozesse rund um den Wareneingang: Eingangskontrolle, Fahrzeugkontrolle, Siegel-Management und Stichprobenverfahren. Direkt verknüpft mit Formular F-01 (Wareneingang-Check) und Anlage A-07.",
+          "schluesselkonzepte": ["Wareneingangsprotokoll", "Siegel-Integrität", "Stichprobenplanung"]
+        },
+        {
+          "id": "M-09",
+          "titel": "M9 – Vorfallsbearbeitung und Dokumentation",
+          "kurzinhalt": "Standardisierter Prozess für die Aufnahme, Dokumentation und Nachverfolgung von Sicherheitsvorfällen: Erstmeldung (F-07), Ermittlung, Maßnahmen und Abschluss. Enthält Eskalationsstufen und Meldepflichten.",
+          "schluesselkonzepte": ["Vorfallsklassifikation", "Ermittlungsprozess", "Meldepflichten (intern/extern)", "Forensische Grundsätze"]
+        },
+        {
+          "id": "M-10",
+          "titel": "M10 – Sicherheitsaudits und Bewertungen",
+          "kurzinhalt": "Methodik für regelmäßige Sicherheitsbewertungen auf Basis der 18 Anlagen (A-01 bis A-18). Planung, Durchführung, Dokumentation und Follow-up von Sicherheitsaudits. Periodizitäten und Priorisierung.",
+          "schluesselkonzepte": ["Audit-Planung und Scope", "Bewertungsstufen", "Finding-Management", "Maßnahmen-Tracking"]
+        },
+        {
+          "id": "M-11",
+          "titel": "M11 – Krisenmanagement und Krisenkommunikation",
+          "kurzinhalt": "Aufbau eines Krisenmanagement-Systems: Krisenteam, Lageraum, Krisenkommunikation (intern/extern/Medien) und Dokumentation. Enthält Checklisten für verschiedene Krisenszenarien und Kommunikationsvorlagen.",
+          "schluesselkonzepte": ["Krisenmanagement-Team (KMT)", "Lagekarte und Lageraum", "Medien- und Krisenkommunikation", "Krisenprotokoll"]
+        },
+        {
+          "id": "M-12",
+          "titel": "M12 – KPIs und Sicherheitskennzahlen",
+          "kurzinhalt": "Entwicklung eines Kennzahlensystems für das LPM: Verlustquoten, Vorfallszahlen, Reaktionszeiten, Schulungsquoten und Audit-Scores. Enthält ein Dashboard-Template und Vorschläge für monatliche Lageberichte.",
+          "schluesselkonzepte": ["Shrinkage Rate", "Incident Rate", "Security Maturity Level", "Management-Reporting"]
+        }
+      ]
+    },
+    {
+      "id": "teil-4",
+      "titel": "Teil IV – Formulare",
+      "beschreibung": "7 direkt einsetzbare Praxisformulare für den täglichen Sicherheitsbetrieb.",
+      "formulare": [
+        { "id": "F-01", "titel": "F-01 – Wareneingang-Check" },
+        { "id": "F-02", "titel": "F-02 – Schichtübergabe-Karte" },
+        { "id": "F-03", "titel": "F-03 – Auf- & Verschlussliste" },
+        { "id": "F-04", "titel": "F-04 – Fremdfirmen- & Besucherbriefing" },
+        { "id": "F-05", "titel": "F-05 – Notfallkarte M5" },
+        { "id": "F-06", "titel": "F-06 – Schlüssel- & Spezialmittelverzeichnis" },
+        { "id": "F-07", "titel": "F-07 – Erstmeldung Störfall" }
+      ]
+    },
+    {
+      "id": "teil-5",
+      "titel": "Teil V – Anlagen (Audit-Checklisten)",
+      "beschreibung": "18 strukturierte Audit-Checklisten als Managementwerkzeuge – direkt in der App verwendbar.",
+      "anlagen": [
+        { "id": "A-01", "titel": "A-01 – Managementsystem-Übersicht", "kapitelRef": "K-04" },
+        { "id": "A-02", "titel": "A-02 – Sicherheitspolitik und Richtlinien", "kapitelRef": "K-04" },
+        { "id": "A-03", "titel": "A-03 – Sicherheitsorganisation", "kapitelRef": "K-05" },
+        { "id": "A-04", "titel": "A-04 – Personalmanagement und Vetting", "kapitelRef": "K-05" },
+        { "id": "A-05", "titel": "A-05 – Gebäudeschutz und physische Sicherheit", "kapitelRef": "K-06" },
+        { "id": "A-06", "titel": "A-06 – Perimeter- und Zonencheckliste", "kapitelRef": "K-06" },
+        { "id": "A-07", "titel": "A-07 – Wareneingang und Warensicherung", "kapitelRef": "K-06" },
+        { "id": "A-08", "titel": "A-08 – Monatliche Standortbewertung", "kapitelRef": "K-07" },
+        { "id": "A-09", "titel": "A-09 – Mitarbeiter-Sicherheitsgespräch", "kapitelRef": "K-07" },
+        { "id": "A-10", "titel": "A-10 – Compliance und rechtliche Grundlagen", "kapitelRef": "K-08" },
+        { "id": "A-11", "titel": "A-11 – Datenschutz und IT-Sicherheit", "kapitelRef": "K-08" },
+        { "id": "A-12", "titel": "A-12 – Notfallplanung und BCM", "kapitelRef": "K-09" },
+        { "id": "A-13", "titel": "A-13 – Krisenmanagement-Readiness", "kapitelRef": "K-09" },
+        { "id": "A-14", "titel": "A-14 – Sicherheitsdienst-Qualität", "kapitelRef": "K-07" },
+        { "id": "A-15", "titel": "A-15 – Fremdfirmen und Besuchermanagement", "kapitelRef": "K-05" },
+        { "id": "A-16", "titel": "A-16 – Veranstaltungssicherheit", "kapitelRef": "K-06" },
+        { "id": "A-17", "titel": "A-17 – Inventursicherheit", "kapitelRef": "K-04" },
+        { "id": "A-18", "titel": "A-18 – Jahres-Sicherheitsaudit", "kapitelRef": "K-09" }
+      ]
+    }
+  ],
+  "glossar": [
+    { "begriff": "Asset", "definition": "Schützenswerter Wert eines Unternehmens – kann materiell (Ware, Anlagen, Geld) oder immateriell (Daten, Ruf, Know-how) sein." },
+    { "begriff": "BCM (Business Continuity Management)", "definition": "Systematischer Ansatz zur Sicherstellung kritischer Geschäftsprozesse bei Störungen oder Ausfällen. Grundlage: ISO 22301." },
+    { "begriff": "CCTV", "definition": "Closed Circuit Television – Videoüberwachungssystem, das Kamerabilder an einen abgesicherten Empfängerkreis überträgt." },
+    { "begriff": "Compliance", "definition": "Einhaltung aller relevanten gesetzlichen Vorschriften, internen Richtlinien und branchenspezifischen Standards." },
+    { "begriff": "Defense in Depth", "definition": "Mehrschichtiges Sicherheitskonzept, bei dem mehrere unabhängige Schutzmaßnahmen kombiniert werden, sodass der Ausfall einer Schicht durch andere kompensiert wird." },
+    { "begriff": "DLP (Data Loss Prevention)", "definition": "Technische und organisatorische Maßnahmen zur Verhinderung des unautorisierten Abflusses von Unternehmensdaten." },
+    { "begriff": "EAS (Electronic Article Surveillance)", "definition": "Elektronische Warensicherung, üblicherweise durch Hartschalen-Tags oder Etiketten, die an Kassenpassagen deaktiviert werden." },
+    { "begriff": "Fraud Triangle", "definition": "Kriminologisches Modell (Donald Cressey): Betrug entsteht aus dem Zusammentreffen von finanziellem Druck, Gelegenheit und einer Rationalisierung der Tat." },
+    { "begriff": "IAM (Identity and Access Management)", "definition": "Systematische Verwaltung digitaler Identitäten und Zugriffsrechte, um sicherzustellen, dass nur Berechtigte auf Ressourcen zugreifen können." },
+    { "begriff": "Insider Threat", "definition": "Sicherheitsrisiko, das von Personen innerhalb der Organisation ausgeht – Mitarbeiter, Führungskräfte, Dienstleister oder ehemalige Mitarbeiter." },
+    { "begriff": "KPI (Key Performance Indicator)", "definition": "Schlüsselkennzahl zur Messung und Steuerung des Sicherheitsniveaus, z. B. Vorfallsrate, Reaktionszeit, Schulungsquote." },
+    { "begriff": "Least Privilege", "definition": "Sicherheitsprinzip: Jeder Nutzer erhält nur die minimalen Berechtigungen, die für seine Aufgabe erforderlich sind." },
+    { "begriff": "Loss Prevention", "definition": "Ganzheitlicher Ansatz zur Verhinderung und Reduzierung von Verlusten in Unternehmen – über Diebstahl hinaus auf alle Verlustquellen ausgedehnt." },
+    { "begriff": "MICE-Modell", "definition": "Motivationsmodell für Insidertäter: Money (Geld), Ideology (Ideologie), Coercion (Erpressung/Zwang), Ego (Geltungsbedürfnis)." },
+    { "begriff": "Perimeter", "definition": "Äußere Sicherheitsgrenze eines Geländes oder Gebäudes – erster Ring im Zonenmodell der physischen Sicherheit." },
+    { "begriff": "Pre-Employment Screening", "definition": "Überprüfung von Bewerbern vor der Einstellung: Referenzprüfung, Zeugnisvalidierung, ggf. erweiterte Zuverlässigkeitsüberprüfung." },
+    { "begriff": "ROSI (Return on Security Investment)", "definition": "Kennzahl zur Wirtschaftlichkeitsbewertung von Sicherheitsmaßnahmen: Verhältnis zwischen vermiedenem Schaden und Investitionskosten." },
+    { "begriff": "Shrinkage", "definition": "Inventurdifferenz im Handel und in der Logistik – Differenz zwischen buchhalterischem und tatsächlichem Warenbestand." },
+    { "begriff": "Social Engineering", "definition": "Manipulation von Personen, um sie zur Herausgabe vertraulicher Informationen oder zur Ausführung sicherheitsrelevanter Handlungen zu verleiten." },
+    { "begriff": "SOP (Standard Operating Procedure)", "definition": "Standardarbeitsanweisung – detaillierte, schriftliche Beschreibung eines Prozessablaufs zur Sicherstellung einheitlicher Ausführung." },
+    { "begriff": "Zero Trust", "definition": "Sicherheitsparadigma: Kein Nutzer und kein System erhält automatisch Vertrauen – jeder Zugriff wird unabhängig von Netzwerkstandort verifiziert." },
+    { "begriff": "ZKS (Zutrittskontrollsystem)", "definition": "Technisches System zur Steuerung und Protokollierung des Zutritts zu Bereichen und Gebäuden." },
+    { "begriff": "ZÜP (Zuverlässigkeitsüberprüfung)", "definition": "Behördliche Überprüfung der persönlichen Zuverlässigkeit für sicherheitskritische Tätigkeiten (z. B. Luftsicherheit § 7 LuftSiG)." }
+  ]
 }

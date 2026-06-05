@@ -7,6 +7,7 @@ import MandantDetail from '@/pages/MandantDetail';
 import ChecklistenRunner from '@/pages/ChecklistenRunner';
 import ExportPage from '@/pages/Export';
 import FormularEditor from '@/pages/FormularEditor';
+import Wissensbasis from '@/pages/Wissensbasis';
 
 function PlaceholderPage({ title, phase }: { title: string; phase: string }): JSX.Element {
   return (
@@ -26,10 +27,7 @@ export default function App(): JSX.Element {
             <Route element={<AppLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="mandant/:mandantId" element={<MandantDetail />} />
-              <Route
-                path="wissensbasis"
-                element={<PlaceholderPage title="Wissensbasis" phase="Phase 7" />}
-              />
+              <Route path="wissensbasis" element={<Wissensbasis />} />
               <Route path="checklisten" element={<ChecklistenRunner />} />
               <Route path="formulare" element={<FormularEditor />} />
               <Route path="export" element={<ExportPage />} />

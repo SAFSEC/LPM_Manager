@@ -8,10 +8,10 @@
 ## ENTWICKLUNGSSTAND
 ```
 Erstellt:              01.06.2026
-Letzter Checkpoint:    05.06.2026 – Phase 6 ABGESCHLOSSEN ✅
-Abgeschlossene Phasen: 1a ✅, 1b ✅, 2 ✅, 3 ✅, 4 ✅, 5 ✅, 6 ✅
-Offene Phasen:         7, 8
-Nächster Schritt: Phase 7 – Wissensbasis (Buchstruktur + KI-Erklärung)
+Letzter Checkpoint:    05.06.2026 – Phase 7 ABGESCHLOSSEN ✅
+Abgeschlossene Phasen: 1a ✅, 1b ✅, 2 ✅, 3 ✅, 4 ✅, 5 ✅, 6 ✅, 7 ✅
+Offene Phasen:         8
+Nächster Schritt: Phase 8 – Einstellungen + Polish + Build
 Privacy-Stack:         Verifiziert – [MANDANT_xxxx] / [PERSON_xxxx] ✅
 Privacy-Modus:         Ollama lokal (Standard) / Extern (Anthropic, OpenAI, Gemini, OpenRouter)
 Git:                   https://github.com/SAFSEC/LPM_Manager (main) ✅
@@ -120,6 +120,36 @@ Keine bekannten offenen Bugs.
 **Offene IPC-Stubs (für spätere Phasen)**
 
 - `formulare:*`, `export:*` → `{ success: false, error: "…Phase …" }`
+
+**Phase 7 – ABGESCHLOSSEN ✅**
+
+| Kriterium | Status | Anmerkung |
+|-----------|--------|-----------|
+| kapitel.json vollständig | ✅ | Teil I–V + Glossar · 9 Kapitel, 10 Stories, 12 Module, 18 Anlagen, 23 Glossareinträge |
+| BuchNavigator (Sidebar-Navigation) | ✅ | Collapsible-Baum durch alle Buchteile |
+| InhaltAnzeige (Detailansicht) | ✅ | Kapitel, Story, Modul, Anlage mit Schlüsselkonzepten |
+| Glossar mit Suche | ✅ | Live-Suche mit Highlight-Funktion |
+| KI-Erklärung (Streaming) | ✅ | Kurz / Ausführlich via Ollama – Wort für Wort |
+| App.tsx Route aktualisiert | ✅ | `/wissensbasis` → `Wissensbasis` statt Platzhalter |
+| `npm run typecheck` | ✅ | 0 Fehler |
+
+**Neue Dateien Phase 7**
+
+- `assets/buchinhalt/kapitel.json` (vollständig befüllt)
+- `src/renderer/types/wissensbasis.ts`
+- `src/renderer/hooks/useWissensbasis.ts`
+- `src/renderer/components/wissensbasis/BuchNavigator.tsx`
+- `src/renderer/components/wissensbasis/InhaltAnzeige.tsx`
+- `src/renderer/components/wissensbasis/KiErklaerPanel.tsx`
+- `src/renderer/components/wissensbasis/GlossarSeite.tsx`
+- `src/renderer/pages/Wissensbasis.tsx` (vollständig)
+
+**Wichtige Dateien (Einstieg Phase 8)**
+
+- Einstellungen-Stub: `src/renderer/pages/Einstellungen.tsx` (noch Platzhalter)
+- Einstellungen-IPC: `electron/ipc/einstellungen.ipc.ts` (bereits vollständig)
+- App-Icons: `assets/icons/` (noch leer, Icons einzufügen)
+- Build-Konfiguration: `electron-builder.config.js` (bereits vorhanden)
 
 **Phase 6 – ABGESCHLOSSEN ✅**
 
