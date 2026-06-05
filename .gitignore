@@ -1,0 +1,17 @@
+node_modules/
+out/
+release/
+dist/
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.env
+.env.*
+.DS_Store
+Thumbs.db
+*.log
+test-out.txt
+.claude/
+Buchskript/
