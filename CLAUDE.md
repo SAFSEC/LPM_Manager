@@ -14,7 +14,7 @@ Offene Phasen:         7, 8
 Nächster Schritt: Phase 7 – Wissensbasis (Buchstruktur + KI-Erklärung)
 Privacy-Stack:         Verifiziert – [MANDANT_xxxx] / [PERSON_xxxx] ✅
 Privacy-Modus:         Ollama lokal (Standard) / Extern (Anthropic, OpenAI, Gemini, OpenRouter)
-Git:                   noch kein Repository initialisiert
+Git:                   https://github.com/SAFSEC/LPM_Manager (main) ✅
 node_modules:          installiert ✅
 Neue Pakete (Phase 5):  docx@^9.6.1 (Word-Export)
 ```
