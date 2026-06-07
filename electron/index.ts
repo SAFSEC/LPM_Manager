@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron/main';
+import { app, BrowserWindow, ipcMain, globalShortcut } from 'electron/main';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { initDatabase, getDbPaths } from '@server/db/client';
@@ -36,6 +36,10 @@ function createWindow(): void {
     if (process.env.ELECTRON_RENDERER_URL) {
       mainWindow?.webContents.openDevTools();
     }
+  });
+
+  globalShortcut.register('F12', () => {
+    mainWindow?.webContents.toggleDevTools();
   });
 
   mainWindow.webContents.on('preload-error', (_event, preloadPath, error) => {
