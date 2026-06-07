@@ -49,7 +49,16 @@ export function MandantProvider({ children }: { children: ReactNode }): JSX.Elem
     async (mitArchiviert = true) => {
       setLoading(true);
       try {
-        const result = await window.lpm.mandanten.liste({ mit_archiviert: mitArchiviert });
+        if (!window.lpm) {
+          throw new IpcError('App-Verbindung nicht verfügbar (Preload fehlgeschlagen). Bitte App neu starten.');
+        }
+        const timeout = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new IpcError('Zeitüberschreitung – App antwortet nicht. Bitte neu starten.')), 8000)
+        );
+        const result = await Promise.race([
+          window.lpm.mandanten.liste({ mit_archiviert: mitArchiviert }),
+          timeout,
+        ]);
         const list = unwrapIpc(result) as Mandant[];
         setMandanten(list);
       } catch (err) {

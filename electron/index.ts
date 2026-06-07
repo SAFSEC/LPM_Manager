@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, globalShortcut } from 'electron/main';
+import { app, BrowserWindow, ipcMain, globalShortcut, dialog } from 'electron/main';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { initDatabase, getDbPaths } from '@server/db/client';
@@ -71,10 +71,22 @@ function registerSystemIpc(): void {
 
 app.setAppUserModelId(APP_ID);
 
+process.on('uncaughtException', (err) => {
+  dialog.showErrorBox('LPM Manager – Startfehler', `Unerwarteter Fehler:\n\n${err.message}\n\n${err.stack ?? ''}`);
+  app.quit();
+});
+
 app.whenReady().then(() => {
-  const userData = app.getPath('userData');
-  initDatabase(userData);
-  initPrivacyVault(path.join(userData, 'tokens.db'));
+  try {
+    const userData = app.getPath('userData');
+    initDatabase(userData);
+    initPrivacyVault(path.join(userData, 'tokens.db'));
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    dialog.showErrorBox('LPM Manager – Datenbankfehler', `Die Datenbank konnte nicht initialisiert werden:\n\n${msg}\n\nBitte Neustart versuchen oder support kontaktieren.`);
+    app.quit();
+    return;
+  }
 
   registerSystemIpc();
   registerMandantenIpc();
