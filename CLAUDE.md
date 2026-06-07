@@ -8,15 +8,17 @@
 ## ENTWICKLUNGSSTAND
 ```
 Erstellt:              01.06.2026
-Letzter Checkpoint:    05.06.2026 – Phase 7 ABGESCHLOSSEN ✅
-Abgeschlossene Phasen: 1a ✅, 1b ✅, 2 ✅, 3 ✅, 4 ✅, 5 ✅, 6 ✅, 7 ✅
-Offene Phasen:         8
-Nächster Schritt: Phase 8 – Einstellungen + Polish + Build
+Letzter Checkpoint:    07.06.2026 – Phase 8 ABGESCHLOSSEN ✅ – V1.0 FERTIG 🎉
+Abgeschlossene Phasen: 1a ✅, 1b ✅, 2 ✅, 3 ✅, 4 ✅, 5 ✅, 6 ✅, 7 ✅, 8 ✅
+Offene Phasen:         keine – V1.0 vollständig
+Nächster Schritt: Produktion / Lizenzkey-System (Phase 9 optional)
 Privacy-Stack:         Verifiziert – [MANDANT_xxxx] / [PERSON_xxxx] ✅
 Privacy-Modus:         Ollama lokal (Standard) / Extern (Anthropic, OpenAI, Gemini, OpenRouter)
 Git:                   https://github.com/SAFSEC/LPM_Manager (main) ✅
 node_modules:          installiert ✅
 Neue Pakete (Phase 5):  docx@^9.6.1 (Word-Export)
+Neue Pakete (Phase 8):  png-to-ico, png2icons (Icon-Generierung, dev-only)
+Build:                 release/LPM Manager Setup 1.0.0.exe ✅
 ```
 
 ### npm-Umgebung – Bekannte Lösungen
@@ -144,29 +146,22 @@ Keine bekannten offenen Bugs.
 - `src/renderer/components/wissensbasis/GlossarSeite.tsx`
 - `src/renderer/pages/Wissensbasis.tsx` (vollständig)
 
-**Wichtige Dateien (Einstieg Phase 8)**
+**Phase 8 – ABGESCHLOSSEN ✅**
 
-- Einstellungen-Stub: `src/renderer/pages/Einstellungen.tsx` (noch Platzhalter → vollständig implementieren)
-- Einstellungen-IPC: `electron/ipc/einstellungen.ipc.ts` ✅ fertig (`einstellungen:laden` / `einstellungen:speichern`)
-- Einstellungen-Repository: `src/server/db/repositories/einstellungen.repository.ts` ✅ fertig (Key-Value in `lpm_einstellungen`)
-- KI-Router: `src/server/ki/router.ts` – liest Einstellungen mit folgenden DB-Schlüsseln:
-  - `ki.adapter.erklaerung` / `ki.adapter.zusammenfassung` / `ki.adapter.empfehlung` / `ki.adapter.risiko`
-  - `ki.apikey.anthropic` / `ki.apikey.openai` / `ki.apikey.gemini` / `ki.apikey.openrouter`
-  - `ki.baseurl.ollama` (Standard: `http://localhost:11434`)
-  - `ki.modell.anthropic` / `ki.modell.openai` / `ki.modell.gemini` / `ki.modell.openrouter`
-- App-Icons: `assets/icons/` (noch leer)
-  - `icon.icns` → macOS (.dmg)
-  - `icon.ico` → Windows (.exe)
-  - `icon.png` 1024×1024 (Basis für beide)
-- Build-Konfiguration: `electron-builder.config.js` ✅ vorhanden (appId: `de.jwsafety.lpm-manager`, NSIS + DMG)
+| Kriterium | Status | Anmerkung |
+|-----------|--------|-----------|
+| `Einstellungen.tsx` vollständig | ✅ | KI-Adapter je Use-Case, API-Keys, Ollama-URL, Modell |
+| Verbindungstest je Adapter | ✅ | Button mit Status-Feedback (✓/✗) je Adapter |
+| App-Icons | ✅ | `icon.png` (1024px), `icon.ico` (multi-res), `icon.icns` (macOS) |
+| Windows-Build | ✅ | `release/LPM Manager Setup 1.0.0.exe` – NSIS-Installer |
+| `npm run typecheck` | ✅ | 0 Fehler |
 
-**Phase-8-Umfang (Checkliste)**
+**Neue Dateien Phase 8**
 
-1. `Einstellungen.tsx` vollständig: KI-Adapter-Auswahl je Use-Case, API-Keys, Ollama-URL, Modellauswahl
-2. Verbindungstest-Button je Adapter (`ki:adapter-testen` IPC ist bereits implementiert)
-3. App-Icons erstellen/einfügen (`icon.icns`, `icon.ico`, `icon.png`)
-4. `npm run build` / `npm run make` – finaler Build-Test (Windows .exe)
-5. Edge Cases und Loading States überprüfen
+- `src/renderer/hooks/useEinstellungen.ts` (Hook mit debounced Save + Adapter-Test)
+- `src/renderer/components/einstellungen/AdapterKarte.tsx` (wiederverwendbare Adapter-Karte)
+- `src/renderer/pages/Einstellungen.tsx` (vollständig – KI-Adapter, API-Keys, Ollama-URL)
+- `assets/icons/icon.png`, `icon.ico`, `icon.icns` (App-Icons für alle Plattformen)
 
 **Phase 6 – ABGESCHLOSSEN ✅**
 
