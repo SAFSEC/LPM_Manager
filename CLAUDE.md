@@ -8,17 +8,17 @@
 ## ENTWICKLUNGSSTAND
 ```
 Erstellt:              01.06.2026
-Letzter Checkpoint:    07.06.2026 – Phase 8 ABGESCHLOSSEN ✅ – V1.0 FERTIG 🎉
-Abgeschlossene Phasen: 1a ✅, 1b ✅, 2 ✅, 3 ✅, 4 ✅, 5 ✅, 6 ✅, 7 ✅, 8 ✅
-Offene Phasen:         keine – V1.0 vollständig
-Nächster Schritt: Produktion / Lizenzkey-System (Phase 9 optional)
+Letzter Checkpoint:    07.06.2026 – Phase 8 code-seitig ABGESCHLOSSEN ✅
+Abgeschlossene Phasen: 1a ✅, 1b ✅, 2 ✅, 3 ✅, 4 ✅, 5 ✅, 6 ✅, 7 ✅, 8 ✅ (Code)
+Offene Phasen:         8 (Produktions-Build-Bug) ⚠️, 9 (Lizenzierung)
+Nächster Schritt:      ZUERST Build-Bug beheben → dann Phase 9 Lizenzierung
 Privacy-Stack:         Verifiziert – [MANDANT_xxxx] / [PERSON_xxxx] ✅
 Privacy-Modus:         Ollama lokal (Standard) / Extern (Anthropic, OpenAI, Gemini, OpenRouter)
 Git:                   https://github.com/SAFSEC/LPM_Manager (main) ✅
 node_modules:          installiert ✅
 Neue Pakete (Phase 5):  docx@^9.6.1 (Word-Export)
 Neue Pakete (Phase 8):  png-to-ico, png2icons (Icon-Generierung, dev-only)
-Build:                 release/LPM Manager Setup 1.0.0.exe ✅
+Build:                 release/LPM Manager Setup 1.0.0.exe – BUILD DEFEKT ⚠️
 ```
 
 ### npm-Umgebung – Bekannte Lösungen
@@ -146,15 +146,48 @@ Keine bekannten offenen Bugs.
 - `src/renderer/components/wissensbasis/GlossarSeite.tsx`
 - `src/renderer/pages/Wissensbasis.tsx` (vollständig)
 
-**Phase 8 – ABGESCHLOSSEN ✅**
+**Phase 8 – Code ABGESCHLOSSEN ✅, Produktions-Build DEFEKT ⚠️**
 
 | Kriterium | Status | Anmerkung |
 |-----------|--------|-----------|
 | `Einstellungen.tsx` vollständig | ✅ | KI-Adapter je Use-Case, API-Keys, Ollama-URL, Modell |
 | Verbindungstest je Adapter | ✅ | Button mit Status-Feedback (✓/✗) je Adapter |
 | App-Icons | ✅ | `icon.png` (1024px), `icon.ico` (multi-res), `icon.icns` (macOS) |
-| Windows-Build | ✅ | `release/LPM Manager Setup 1.0.0.exe` – NSIS-Installer |
 | `npm run typecheck` | ✅ | 0 Fehler |
+| Dev-Modus (`npm run dev`) | ✅ | App läuft korrekt |
+| Windows-Build (`.exe`) | ⚠️ | DEFEKT – UI lädt, aber IPC hängt (kein Mandant anlegbar) |
+
+**OFFENER BUG – Produktions-Build IPC-Hänger (MUSS ZUERST BEHOBEN WERDEN)**
+
+**Symptom:** Installierte `.exe` zeigt Layout (Sidebar/Reiter) korrekt, aber Dashboard bleibt im
+Ladekreis hängen. Kein `+`-Button sichtbar, kein Mandant anlegbar. Dev-Modus funktioniert.
+
+**Was bereits geprüft/ausgeschlossen wurde:**
+- `better-sqlite3` ist korrekt in `app.asar.unpacked/node_modules/` enthalten ✓
+- `App.tsx` Einstellungen-Route war auf PlaceholderPage – behoben ✓
+- F12-DevTools in Produktion freigeschaltet ✓
+- IPC-Timeout (8s) + Preload-Check + Fehler-Dialog bei DB-Init hinzugefügt ✓
+- ABER: Fehlerdialog erscheint nicht → DB-Init wirft keinen Fehler
+- ABER: Timeout erscheint nicht → `window.lpm` ist möglicherweise undefined (Preload lädt nicht)
+
+**Wahrscheinlichste Ursache:**
+Das Preload-Script (`out/preload/preload.cjs`) wird in der gepackten App nicht korrekt geladen.
+Mit `sandbox: true` und asar-Verpackung kann es Probleme mit der Preload-Pfadauflösung geben.
+
+**Nächste Schritte beim Start der nächsten Session:**
+
+1. **ZUERST prüfen:** `sandbox: true` → `sandbox: false` setzen in `electron/index.ts`
+   (oder testen ob Preload-Pfad stimmt: `path.join(__dirname, '../preload/preload.cjs')`)
+2. **Alternativ:** In der installierten App F12 drücken → Konsole → `window.lpm` eingeben.
+   - Wenn `undefined` → Preload lädt nicht (Pfad- oder Sandbox-Problem)
+   - Wenn Objekt → Preload OK, Problem liegt im Main-Prozess (DB, IPC-Handler)
+3. **Build-Prozess:** Vor dem Build `npm run rebuild:native` explizit ausführen:
+   `$env:NODE_TLS_REJECT_UNAUTHORIZED = "0"; npm run rebuild:native`
+   dann erst `npm run dist:win`
+4. **electron-builder Config prüfen:** `asar: false` testen (disables asar packaging, einfacher)
+5. **Preload-Pfad hardcoden:** statt `path.join(__dirname, '../preload/preload.cjs')` den
+   absoluten Pfad via `app.getAppPath()` bauen
+6. **Nach Fix:** Vollständigen Workflow testen: Mandant anlegen → Checkliste → Export
 
 **Neue Dateien Phase 8**
 
@@ -162,6 +195,44 @@ Keine bekannten offenen Bugs.
 - `src/renderer/components/einstellungen/AdapterKarte.tsx` (wiederverwendbare Adapter-Karte)
 - `src/renderer/pages/Einstellungen.tsx` (vollständig – KI-Adapter, API-Keys, Ollama-URL)
 - `assets/icons/icon.png`, `icon.ico`, `icon.icns` (App-Icons für alle Plattformen)
+
+---
+
+**Phase 9 – Lizenzierung (NACH Build-Fix)**
+
+**Konzept:**
+- App startet immer ohne Lizenz als **30-Tage-Testversion** (voll funktionsfähig)
+- Einmalige Aktivierung mit **Lizenzkey** → schaltet Vollversion dauerhaft frei
+- Lizenzkey wird lokal gespeichert und beim Start geprüft
+- Nach Ablauf der Testphase: App startet noch, zeigt aber Hinweis + Aktivierungs-Dialog
+
+**Lizenzkey-Format (Vorschlag):**
+```
+LPM-XXXX-XXXX-XXXX-XXXX
+```
+- 16 Zeichen (ohne Prefix), Base32 oder HEX
+- Offline-validierbar (kein Server nötig): HMAC-SHA256 mit festem Secret im Code
+- Alternativ: einfache Checksumme / bekanntes Muster das offline verifiziert werden kann
+
+**Scope Phase 9:**
+1. `src/server/license/` – Lizenz-Logik (validieren, speichern, Status lesen)
+2. `electron/ipc/lizenz.ipc.ts` – IPC: `lizenz:status`, `lizenz:aktivieren`
+3. `src/renderer/pages/LizenzAktivierung.tsx` – Aktivierungs-Dialog
+4. `src/renderer/components/layout/` – Testversions-Banner (wenn <30 Tage oder abgelaufen)
+5. Lizenzstatus in `tokens.db` oder eigener `license.db` speichern (getrennt von main.db)
+6. Lizenzkey-Generator-Script: `scripts/generate-license.ts` (für Jörg intern)
+7. Einstellungen-Seite: Lizenzstatus + Aktivierungsfeld anzeigen
+
+**Lizenz-Validierung (offline):**
+```typescript
+// Beispiel-Ansatz: HMAC-SHA256
+import crypto from 'node:crypto';
+const SECRET = 'lpm-jwsafety-2026-INTERN'; // im Code eingebettet
+function validateKey(key: string): boolean {
+  // Key = BASE32(HMAC(deviceId + 'LPM-FULL', SECRET)).slice(0, 16)
+  // oder simpler: festes Muster + Checksumme
+}
+```
 
 **Phase 6 – ABGESCHLOSSEN ✅**
 
