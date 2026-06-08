@@ -54,11 +54,23 @@ function createWindow(): void {
   });
 
   mainWindow.webContents.on('preload-error', (_event, preloadPath, error) => {
-    console.error('[PRELOAD-ERROR]', preloadPath, error);
+    log(`PRELOAD-ERROR: ${preloadPath} :: ${error.message}`);
     dialog.showErrorBox(
       'LPM Manager – Preload-Fehler',
       `Das Preload-Script konnte nicht geladen werden:\n\n${preloadPath}\n\nFehler: ${error.message}`
     );
+  });
+
+  mainWindow.webContents.on('console-message', (_event, level, message, line, sourceId) => {
+    log(`RENDERER[${level}]: ${message} (${sourceId}:${line})`);
+  });
+
+  mainWindow.webContents.on('did-fail-load', (_event, errorCode, errorDescription, validatedURL) => {
+    log(`DID-FAIL-LOAD: ${errorCode} ${errorDescription} url=${validatedURL}`);
+  });
+
+  mainWindow.webContents.on('render-process-gone', (_event, details) => {
+    log(`RENDER-PROCESS-GONE: reason=${details.reason} exitCode=${details.exitCode}`);
   });
 
   if (process.env.ELECTRON_RENDERER_URL) {

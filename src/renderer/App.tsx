@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { MandantProvider } from '@/context/MandantContext';
 import { ToastProvider } from '@/context/ToastContext';
@@ -14,7 +14,7 @@ export default function App(): JSX.Element {
   return (
     <ToastProvider>
       <MandantProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Dashboard />} />
@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </MandantProvider>
     </ToastProvider>
   );
