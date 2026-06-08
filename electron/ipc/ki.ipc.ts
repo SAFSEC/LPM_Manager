@@ -3,6 +3,7 @@ import type { IpcMainInvokeEvent } from 'electron/main';
 import { ipcOk, ipcErr, ipcFromError } from './ipcTypes';
 import { sendKiAnfrage, testeAdapter } from '@server/ki/index';
 import type { KiAnfrage, KiAdapterId } from '@server/ki/types';
+import { log } from '../logger';
 
 interface KiAnfragePayload {
   useCase: string;
@@ -50,16 +51,23 @@ export function registerKiIpc(): void {
       };
 
       const streamId = `ki-${Date.now()}`;
+      log(`KI-Anfrage: useCase=${anfrage.useCase} adapter=${anfrage.adapter ?? '(default)'}`);
 
       sendKiAnfrage(anfrage, (chunk: unknown) => {
+        const c = chunk as { type?: string; error?: string };
+        if (c.type === 'error') {
+          log(`KI-Fehler (Stream): ${c.error ?? 'unbekannt'}`);
+        }
         if (!event.sender.isDestroyed()) {
           event.sender.send('ki:stream-chunk', chunk);
         }
       }).catch((err: unknown) => {
+        const msg = err instanceof Error ? err.message : 'Unbekannter KI-Fehler';
+        log(`KI-Fehler (Exception): ${msg}`);
         if (!event.sender.isDestroyed()) {
           event.sender.send('ki:stream-chunk', {
             type: 'error',
-            error: err instanceof Error ? err.message : 'Unbekannter KI-Fehler',
+            error: msg,
           });
         }
       });

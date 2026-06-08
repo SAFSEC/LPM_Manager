@@ -25,14 +25,24 @@ export const ollamaAdapter: KiAdapter = {
           ],
         }),
       });
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Verbindungsfehler';
-      onChunk({ type: 'error', error: `Ollama nicht erreichbar: ${msg}` });
+    } catch {
+      onChunk({
+        type: 'error',
+        error:
+          `Ollama (lokale KI) ist nicht erreichbar unter ${baseUrl}. ` +
+          `Bitte Ollama installieren und starten (https://ollama.com) und das Modell laden ` +
+          `(im Terminal: "ollama pull ${model}"). ` +
+          `Alternativ in den Einstellungen einen externen KI-Dienst (z. B. Anthropic/OpenAI) mit API-Key hinterlegen.`,
+      });
       return;
     }
 
     if (!response.ok) {
-      onChunk({ type: 'error', error: `Ollama Fehler: HTTP ${response.status}` });
+      const hinweis =
+        response.status === 404
+          ? ` Das Modell "${model}" ist nicht geladen. Bitte im Terminal ausführen: "ollama pull ${model}".`
+          : '';
+      onChunk({ type: 'error', error: `Ollama-Fehler: HTTP ${response.status}.${hinweis}` });
       return;
     }
 

@@ -1,19 +1,9 @@
 import { app, BrowserWindow, ipcMain, globalShortcut, dialog } from 'electron/main';
 import path from 'node:path';
-import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { initDatabase, getDbPaths } from '@server/db/client';
 import { initPrivacyVault } from '@server/privacy/tokenVault';
-
-let logFile: string | null = null;
-
-function log(msg: string): void {
-  const line = `[${new Date().toISOString()}] ${msg}\n`;
-  console.log(msg);
-  if (logFile) {
-    try { fs.appendFileSync(logFile, line); } catch { /* ignore */ }
-  }
-}
+import { initLogger, log, getLogFilePath } from './logger';
 import { registerMandantenIpc } from './ipc/mandanten.ipc';
 import { registerChecklistenIpc } from './ipc/checklisten.ipc';
 import { registerFormulareIpc } from './ipc/formulare.ipc';
@@ -111,7 +101,7 @@ process.on('unhandledRejection', (reason) => {
 
 app.whenReady().then(() => {
   const userData = app.getPath('userData');
-  logFile = path.join(userData, 'lpm-startup.log');
+  initLogger(userData);
   log('=== LPM Manager Start ===');
   log(`userData: ${userData}`);
   log(`__dirname: ${__dirname}`);
@@ -127,7 +117,7 @@ app.whenReady().then(() => {
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     log(`DB FEHLER: ${msg}`);
-    dialog.showErrorBox('LPM Manager – Datenbankfehler', `Die Datenbank konnte nicht initialisiert werden:\n\n${msg}\n\nLog: ${logFile ?? 'unbekannt'}`);
+    dialog.showErrorBox('LPM Manager – Datenbankfehler', `Die Datenbank konnte nicht initialisiert werden:\n\n${msg}\n\nLog: ${getLogFilePath() ?? 'unbekannt'}`);
     app.quit();
     return;
   }
