@@ -7,7 +7,11 @@ export default {
     output: 'release',
     buildResources: 'assets',
   },
-  files: ['out/**/*', 'package.json'],
+  files: [
+    'out/**/*',
+    'package.json',
+  ],
+  asar: false,
   mac: {
     category: 'public.app-category.business',
     target: ['dmg'],

@@ -1,8 +1,19 @@
 import { app, BrowserWindow, ipcMain, globalShortcut, dialog } from 'electron/main';
 import path from 'node:path';
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { initDatabase, getDbPaths } from '@server/db/client';
 import { initPrivacyVault } from '@server/privacy/tokenVault';
+
+let logFile: string | null = null;
+
+function log(msg: string): void {
+  const line = `[${new Date().toISOString()}] ${msg}\n`;
+  console.log(msg);
+  if (logFile) {
+    try { fs.appendFileSync(logFile, line); } catch { /* ignore */ }
+  }
+}
 import { registerMandantenIpc } from './ipc/mandanten.ipc';
 import { registerChecklistenIpc } from './ipc/checklisten.ipc';
 import { registerFormulareIpc } from './ipc/formulare.ipc';
@@ -27,7 +38,7 @@ function createWindow(): void {
       preload: path.join(__dirname, '../preload/preload.cjs'),
       contextIsolation: true,
       nodeIntegration: false,
-      sandbox: true,
+      sandbox: false,
     },
   });
 
@@ -44,6 +55,10 @@ function createWindow(): void {
 
   mainWindow.webContents.on('preload-error', (_event, preloadPath, error) => {
     console.error('[PRELOAD-ERROR]', preloadPath, error);
+    dialog.showErrorBox(
+      'LPM Manager – Preload-Fehler',
+      `Das Preload-Script konnte nicht geladen werden:\n\n${preloadPath}\n\nFehler: ${error.message}`
+    );
   });
 
   if (process.env.ELECTRON_RENDERER_URL) {
@@ -72,22 +87,40 @@ function registerSystemIpc(): void {
 app.setAppUserModelId(APP_ID);
 
 process.on('uncaughtException', (err) => {
+  log(`UNCAUGHT EXCEPTION: ${err.message}\n${err.stack ?? ''}`);
   dialog.showErrorBox('LPM Manager – Startfehler', `Unerwarteter Fehler:\n\n${err.message}\n\n${err.stack ?? ''}`);
   app.quit();
 });
 
+process.on('unhandledRejection', (reason) => {
+  const msg = reason instanceof Error ? reason.message : String(reason);
+  log(`UNHANDLED REJECTION: ${msg}`);
+});
+
 app.whenReady().then(() => {
+  const userData = app.getPath('userData');
+  logFile = path.join(userData, 'lpm-startup.log');
+  log('=== LPM Manager Start ===');
+  log(`userData: ${userData}`);
+  log(`__dirname: ${__dirname}`);
+  log(`preload path: ${path.join(__dirname, '../preload/preload.cjs')}`);
+
   try {
-    const userData = app.getPath('userData');
+    log('initDatabase...');
     initDatabase(userData);
+    log('initDatabase OK');
+    log('initPrivacyVault...');
     initPrivacyVault(path.join(userData, 'tokens.db'));
+    log('initPrivacyVault OK');
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    dialog.showErrorBox('LPM Manager – Datenbankfehler', `Die Datenbank konnte nicht initialisiert werden:\n\n${msg}\n\nBitte Neustart versuchen oder support kontaktieren.`);
+    log(`DB FEHLER: ${msg}`);
+    dialog.showErrorBox('LPM Manager – Datenbankfehler', `Die Datenbank konnte nicht initialisiert werden:\n\n${msg}\n\nLog: ${logFile ?? 'unbekannt'}`);
     app.quit();
     return;
   }
 
+  log('registerIpc...');
   registerSystemIpc();
   registerMandantenIpc();
   registerChecklistenIpc();
@@ -95,8 +128,10 @@ app.whenReady().then(() => {
   registerKiIpc();
   registerExportIpc();
   registerEinstellungenIpc();
+  log('registerIpc OK');
 
   createWindow();
+  log('createWindow OK');
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
